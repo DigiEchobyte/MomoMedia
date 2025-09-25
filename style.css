@@ -1,0 +1,193 @@
+/* =============== GLOBAL RESET =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Orbitron", sans-serif;
+  background: #0d0d0f;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* =============== NAVBAR =============== */
+nav {
+  background: rgba(10, 10, 15, 0.9);
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+  background: linear-gradient(90deg, #7700ff, #00ffe0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: linear-gradient(90deg, #00ffe0, #7700ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px #00ffe0, 0 0 12px #7700ff;
+}
+
+/* =============== HEADER / SECTIONS =============== */
+header, section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00ffe0, #7700ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #00ffe0; }
+  to { text-shadow: 0 0 20px #7700ff; }
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #7700ff, #00ffe0);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 12px rgba(0,255,224,0.6);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(119,0,255,0.8), 0 0 25px rgba(0,255,224,0.8);
+}
+
+/* =============== FORMS =============== */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  gap: 15px;
+}
+
+form input, form textarea, form select {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: #1a1a1d;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0,255,224,0.4);
+}
+
+form button {
+  align-self: center;
+}
+
+/* =============== CHAT BOX =============== */
+.chat-box {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(20,20,30,0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,255,224,0.4);
+  backdrop-filter: blur(5px);
+}
+
+#chat-body {
+  height: 250px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  background: rgba(10,10,15,0.6);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#chat-body p {
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+}
+
+#chat-body p.user {
+  background: linear-gradient(90deg, #00ffe0, #7700ff);
+  align-self: flex-end;
+  color: #000;
+}
+
+#chat-body p.ai {
+  background: #2c2c34;
+  border: 1px solid #00ffe0;
+  color: #fff;
+}
+
+/* =============== FOOTER =============== */
+footer {
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(10,10,15,0.9);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =============== PAGE TRANSITIONS =============== */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-out {
+  animation: fadeOut 0.6s ease forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(20px); }
+}
