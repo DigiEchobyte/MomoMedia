@@ -3,34 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat | MomoMedia</title>
+  <title>AI Chat | MomoMedia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
-      <li><a href="chat.html" class="active">Chat</a></li>
-      <li><a href="ai.html">AI</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="chat.html" class="active">Chat</a>
+    <a href="ai.html">AI</a>
+    <a href="login.html">Login</a>
   </nav>
 
-  <section>
-    <h2>Live Chat</h2>
-    <div class="chat-box">
-      <div id="chat-body"></div>
-      <input type="text" id="chat-input" placeholder="Type a message...">
-      <button id="send-btn" class="btn">Send</button>
-    </div>
+  <section class="chat-container">
+    <h2>Talk with AI</h2>
+    <div id="chat-box" class="chat-box"></div>
+    <input id="user-input" type="text" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
   </section>
 
-  <footer>
-    <p>© 2025 MomoMedia</p>
-  </footer>
-  <script src="script.js"></script>
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const chatBox = document.getElementById("chat-box");
+      const message = input.value.trim();
+      if (!message) return;
+
+      chatBox.innerHTML += `<div class="user-msg">You: ${message}</div>`;
+      input.value = "";
+
+      const response = await fetch("https://momomedia-backend.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await response.json();
+      chatBox.innerHTML += `<div class="ai-msg">AI: ${data.reply}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
 </body>
 </html>
